@@ -19,34 +19,37 @@ export class FunkoManager {
     return path.join(this.userDir, `${id}.json`);
   }
 
-  addFunko(funko: Funko): void {
+  addFunko(funko: Funko): boolean {
     const filePath = this.getFunkoFilePath(funko.id);
     if (fs.existsSync(filePath)) {
       console.log("Error: El Funko ya existe.");
-      return;
+      return false;
     }
     fs.writeFileSync(filePath, JSON.stringify(funko, null, 2));
     console.log("Funko añadido correctamente.");
+    return true;
   }
-
-  updateFunko(funko: Funko): void {
+  
+  updateFunko(funko: Funko): boolean {
     const filePath = this.getFunkoFilePath(funko.id);
     if (!fs.existsSync(filePath)) {
       console.log("Error: El Funko no existe.");
-      return;
+      return false;
     }
     fs.writeFileSync(filePath, JSON.stringify(funko, null, 2));
     console.log("Funko actualizado correctamente.");
+    return true;
   }
-
-  removeFunko(id: number): void {
+  
+  removeFunko(id: number): boolean {
     const filePath = this.getFunkoFilePath(id);
     if (!fs.existsSync(filePath)) {
       console.log("Error: El Funko no existe.");
-      return;
+      return false;
     }
     fs.unlinkSync(filePath);
     console.log("Funko eliminado correctamente.");
+    return true;
   }
 
   listFunkos(): Funko[] {

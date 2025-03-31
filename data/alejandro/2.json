@@ -1,0 +1,12 @@
+{
+  "id": 2,
+  "name": "Goku",
+  "description": "Funko de Goku SSJ",
+  "type": "Pop!",
+  "genre": "Anime",
+  "franchise": "Dragon Ball",
+  "number": 10,
+  "exclusive": false,
+  "specialFeatures": "",
+  "marketValue": 25
+}
