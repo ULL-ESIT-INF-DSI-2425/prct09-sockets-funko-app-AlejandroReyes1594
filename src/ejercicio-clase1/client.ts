@@ -43,6 +43,7 @@ client.connect(PORT, "127.0.0.1", () => {
  * \@param data Datos recibidos en formato JSON.
  */
 client.on("data", (data) => {
+    let 
   try {
     const message: Message = JSON.parse(data.toString());
 
