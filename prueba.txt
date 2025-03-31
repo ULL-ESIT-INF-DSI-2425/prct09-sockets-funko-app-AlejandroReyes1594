@@ -1,0 +1,53 @@
+import net from "net";
+import { ChatMessage, Message } from "./types";
+import readline from "readline";
+import chalk from "chalk";
+
+const PORT = 4000;
+const client = new net.Socket();
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+client.connect(PORT, "127.0.0.1", () => {
+  console.log(chalk.green("Conectado al servidor de chat"));
+});
+
+client.on("data", (data) => {
+  try {
+    const message: Message = JSON.parse(data.toString());
+
+    if (message.type === "server") {
+      console.log(chalk.gray(`🛈 ${message.content}`));
+    } else if (message.type === "message") {
+      console.log(chalk.blue(`[${message.sender}]: ${message.content}`));
+    }
+  } catch (error) {
+    console.error(chalk.red("Error al procesar mensaje:", error));
+  }
+});
+
+client.on("close", () => {
+  console.log(chalk.yellow("Desconectado del servidor"));
+  process.exit(0);
+});
+
+client.on("error", (err) => {
+  console.error(chalk.red("Error de conexión:", err.message));
+});
+
+rl.question("Introduce tu nombre: ", (name) => {
+  console.log(chalk.cyan(`¡Bienvenido, ${name}! Escribe mensajes para enviarlos.`));
+
+  rl.on("line", (input) => {
+    const message: ChatMessage = {
+      type: "message",
+      sender: name,
+      content: input
+    };
+
+    client.write(JSON.stringify(message));
+  });
+});
