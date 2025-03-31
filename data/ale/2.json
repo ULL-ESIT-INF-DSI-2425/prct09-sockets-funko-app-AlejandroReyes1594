@@ -1,0 +1,12 @@
+{
+  "id": 2,
+  "name": "Doggie",
+  "description": "Wauf Wauf",
+  "type": "Pop!",
+  "genre": "Games",
+  "franchise": "Doggies",
+  "number": 2,
+  "exclusive": false,
+  "specialFeatures": "it barks!",
+  "marketValue": 12
+}

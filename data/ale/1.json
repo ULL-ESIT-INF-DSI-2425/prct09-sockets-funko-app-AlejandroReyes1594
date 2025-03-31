@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Sonic",
+  "description": "The best Funko ever",
+  "type": "Pop!",
+  "genre": "Games",
+  "franchise": "Sonic",
+  "number": 1,
+  "exclusive": false,
+  "specialFeatures": "blue",
+  "marketValue": 20.99
+}

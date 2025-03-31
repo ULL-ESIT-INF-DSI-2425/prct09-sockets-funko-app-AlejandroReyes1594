@@ -1,0 +1,15 @@
+{
+  "exclude": [
+    "./tests",
+    "./node_modules",
+    "./dist"
+  ],
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "NodeNext",
+    "rootDir": "./src",
+    "declaration": true,
+    "outDir": "./dist",
+    "noImplicitAny": true
+  }
+}
